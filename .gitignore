@@ -17,3 +17,7 @@
 # Temporary files
 
 junit*.properties
+
+# idea files
+*/.idea
+*.iml

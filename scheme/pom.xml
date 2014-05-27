@@ -1,176 +1,183 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!--
+  <!--
 
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
 
-         http://www.apache.org/licenses/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
-  -->
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>cascading.avro</groupId>
-    <artifactId>avro-scheme</artifactId>
-    <version>2.2-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>Cascading support for Avro</name>
-    <description>
-        Cascading scheme for reading and writing Avro-serialized data.
-    </description>
-    <scm>
-        <connection>scm:git:git://github.com/bixolabs/cascading.avro.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:bixolabs/cascading.avro.git</developerConnection>
-        <url>https://github.com/bixolabs/cascading.avro</url>
-    </scm>
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cascading.avro</groupId>
+  <artifactId>avro-scheme</artifactId>
+  <version>2.2-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>Cascading support for Avro</name>
+  <description>
+    Cascading scheme for reading and writing Avro-serialized data.
+  </description>
+  <scm>
+    <connection>scm:git:git://github.com/bixolabs/cascading.avro.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:bixolabs/cascading.avro.git</developerConnection>
+    <url>https://github.com/bixolabs/cascading.avro</url>
+  </scm>
 
-    <properties>
-        <hadoop.version>1.0.3</hadoop.version>
-        <cascading.version>2.1.6</cascading.version>
-        <avro.version>1.7.4</avro.version>
-    </properties>
+  <properties>
+    <hadoop.version>2.0.0-mr1-cdh4.3.0</hadoop.version>
+    <hadoop.client.version>2.0.0-cdh4.3.0</hadoop.client.version>
+    <cascading.version>2.5.4</cascading.version>
+    <avro.version>1.7.6</avro.version>
+  </properties>
 
-    <repositories>
-        <repository>
-            <name>Conjars Repo</name>
-            <id>conjars</id>
-            <url>http://conjars.org/repo</url>
-        </repository>
-        <repository>
-            <name>Maven Central Repo</name>
-            <id>maven-central</id>
-            <url>http://repo1.maven.org/maven2/</url>
-        </repository>
-    </repositories>
+  <repositories>
+    <repository>
+      <name>Conjars Repo</name>
+      <id>conjars</id>
+      <url>http://conjars.org/repo</url>
+    </repository>
+    <repository>
+      <name>Maven Central Repo</name>
+      <id>maven-central</id>
+      <url>http://repo1.maven.org/maven2/</url>
+    </repository>
+  </repositories>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.3.2</version>
-                    <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
-                        <encoding>UTF-8</encoding>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.avro</groupId>
-                <artifactId>avro-maven-plugin</artifactId>
-                <version>${avro.version}</version>
-                <executions>
-                    <execution>
-                        <id>generate-avro-test-sources</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>schema</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <testSourceDirectory>${basedir}/src/test/resources/cascading/avro</testSourceDirectory>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <source>1.7</source>
+            <target>1.7</target>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.avro</groupId>
+        <artifactId>avro-maven-plugin</artifactId>
+        <version>${avro.version}</version>
+        <executions>
+          <execution>
+            <id>generate-avro-test-sources</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>schema</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <testSourceDirectory>${basedir}/src/test/resources/cascading/avro</testSourceDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
-    <distributionManagement>
-        <repository>
-            <id>conjars</id>
-            <name>Concurrent Conjars repository</name>
-            <url>http://conjars.org/repo</url>
-        </repository>
-    </distributionManagement>
+  <distributionManagement>
+    <repository>
+      <id>conjars</id>
+      <name>Concurrent Conjars repository</name>
+      <url>http://conjars.org/repo</url>
+    </repository>
+  </distributionManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.avro</groupId>
-            <artifactId>avro</artifactId>
-            <version>${avro.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.avro</groupId>
-            <artifactId>avro-mapred</artifactId>
-            <version>${avro.version}</version>
-            <exclusions>
-              <exclusion>
-                <groupId>org.apache.avro</groupId>
-                <artifactId>avro-ipc</artifactId>
-              </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-core</artifactId>
-            <version>${hadoop.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>cascading</groupId>
-            <artifactId>cascading-core</artifactId>
-            <version>${cascading.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cascading</groupId>
-            <artifactId>cascading-hadoop</artifactId>
-            <version>${cascading.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cascading</groupId>
-            <artifactId>cascading-local</artifactId>
-            <version>${cascading.version}</version>
-        </dependency>
-        <!-- trevni -->
-        <dependency>
-			<groupId>org.apache.avro</groupId>
-			<artifactId>trevni-avro</artifactId>
-			<version>${avro.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>hadoop-core</artifactId>
-					<groupId>org.apache.hadoop</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.avro</groupId>
-			<artifactId>trevni-core</artifactId>
-			<version>${avro.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.6</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-			<scope>test</scope>
-		</dependency>
-        <!-- test -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>1.3</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro</artifactId>
+      <version>${avro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro-mapred</artifactId>
+      <version>${avro.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>avro-ipc</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-core</artifactId>
+      <version>${hadoop.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-client</artifactId>
+      <version>${hadoop.client.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>cascading</groupId>
+      <artifactId>cascading-core</artifactId>
+      <version>${cascading.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>cascading</groupId>
+      <artifactId>cascading-hadoop</artifactId>
+      <version>${cascading.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>cascading</groupId>
+      <artifactId>cascading-local</artifactId>
+      <version>${cascading.version}</version>
+    </dependency>
+    <!-- trevni -->
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>trevni-avro</artifactId>
+      <version>${avro.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>hadoop-core</artifactId>
+          <groupId>org.apache.hadoop</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>trevni-core</artifactId>
+      <version>${avro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.6.6</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.16</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-all</artifactId>
+      <version>1.3</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 </project>
