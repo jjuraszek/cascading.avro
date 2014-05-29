@@ -188,33 +188,6 @@ public class CascadingToAvroTest {
     }
 
     @Test
-    public void testParseTupleEntry() {
-        byte[] buffer_value = { 0, 1, 2, 3, 0, 0, 0 };
-        ByteBuffer buffer = ByteBuffer.wrap(buffer_value);
-        Fixed fixed = new Fixed(schema.getField("aFixed").schema(), new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-                13, 14, 15, 16 });
-
-        Object[] output = CascadingToAvro.parseTupleEntry(tupleEntry, schema);
-
-        assertThat(output.length, is(11));
-        assertThat((Boolean) output[0], is(false));
-        assertThat((Integer) output[1], is(10));
-        assertThat((Long) output[2], is(5L));
-        assertThat((Float) output[3], is(0.6f));
-        assertThat((Double) output[4], is(1.01));
-        assertThat((String) output[5], is("This is my string"));
-        assertThat((ByteBuffer) output[6], is(buffer));
-        assertThat((Fixed) output[7], is(fixed));
-        List<Integer> outList = (List<Integer>) output[8];
-        assertThat(outList.get(0), is(0));
-        assertThat(outList.get(1), is(1));
-        Map<String, Integer> outMap = (Map<String, Integer>) output[9];
-        assertThat(outMap.get("one"), is(1));
-        assertThat(outMap.get("two"), is(2));
-        assertThat((Integer) output[10], is(5));
-    }
-
-    @Test
     public void testArraySchema() {
         List<Integer> array = new ArrayList<Integer>();
         array.add(0);
