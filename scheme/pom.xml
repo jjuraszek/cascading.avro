@@ -24,9 +24,9 @@
     Cascading scheme for reading and writing Avro-serialized data.
   </description>
   <scm>
-    <connection>scm:git:git://github.com/bixolabs/cascading.avro.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com:bixolabs/cascading.avro.git</developerConnection>
-    <url>https://github.com/bixolabs/cascading.avro</url>
+    <connection>scm:git:git://github.com/jjuraszek/cascading.avro.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:jjuraszek/cascading.avro.git</developerConnection>
+    <url>https://github.com/jjuraszek/cascading.avro</url>
   </scm>
 
   <properties>
