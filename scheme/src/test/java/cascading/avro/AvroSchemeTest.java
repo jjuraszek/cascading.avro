@@ -650,7 +650,7 @@ public class AvroSchemeTest extends Assert {
     String enumField = String.format("{\"type\":\"enum\",\"name\":\"%s\",\"namespace\":\"%s\",\"symbols\":[\"ONE\",\"TWO\"]}",
                                      "TestEnum", TestEnum.class.getPackage().getName());
 
-    String expected = String.format("{\"type\":\"record\",\"name\":\"CascadingAvroRecord\",\"doc\":\"auto generated\",\"fields\":[{\"name\":\"a\",\"type\":[\"null\",%s],\"doc\":\"\"}]}",
+    String expected = String.format("{\"type\":\"record\",\"name\":\"CascadingAvroRecord\",\"namespace\":\"\",\"doc\":\"auto generated\",\"fields\":[{\"name\":\"a\",\"type\":[\"null\",%s],\"doc\":\"\"}]}",
                                     enumField);
     assertEquals(expected, jsonSchema);
   }

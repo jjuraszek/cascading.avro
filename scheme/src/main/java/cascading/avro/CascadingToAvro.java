@@ -96,7 +96,7 @@ public class CascadingToAvro {
         return toAvroArray(obj, schema);
 
       case STRING:
-        return obj.toString();
+        return obj!=null ? obj.toString() : "";
       case ENUM:
         return toAvroEnum(obj, schema);
 
